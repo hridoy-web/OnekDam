@@ -3,19 +3,12 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export default function NavLinks() {
+export default function NavLinks({ navItems }) {
     const pathname = usePathname()
-
-    const navItem = [
-        { name: "Home", href: "/" },
-        { name: "All Products", href: "/products" },
-        { name: "Categories", href: "/categories" },
-        { name: "Contact", href: "/contact" }
-    ]
 
     return (
         <nav className="hidden md:flex gap-6 items-center">
-            {navItem.map(link => {
+            {navItems.map(link => {
                 const isActive = pathname === link.href;
                 return (
                     <Link key={link.href}
